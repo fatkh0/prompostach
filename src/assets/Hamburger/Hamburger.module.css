@@ -56,3 +56,53 @@ top: 0;
 right: 6px;
 transform: rotateZ(-45deg);
 }
+
+
+
+@media only screen and (max-width: 640px) {
+    label {
+        width: 30px;
+        height: 30px;
+    }
+
+    label div {
+        position: relative;
+        height: 4px;
+        background-color: #fff;
+        margin-bottom: 7px;
+        transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
+            0.3s ease right;
+        border-radius: 2px;
+        }
+        
+
+    label div:last-child {
+        margin-bottom: 0;
+        transform-origin: 30px;
+    }
+    
+    label div:nth-child(2) {
+        right: 0;
+        width: 30px;
+    }
+
+    .menu_checkbox:checked + label div:first-child {
+        top: -2px;
+        right: -4px;
+        transform: rotateZ(45deg);
+    }
+    
+    .menu_checkbox:checked + label div:last-child {
+        top: 4px;
+        left: 2px;
+        transform: rotateZ(45deg);
+    }
+    
+    .menu_checkbox:checked + label div:nth-child(2) {
+        width: 40px;
+        top: 0;
+        right: 2px;
+        transform: rotateZ(-45deg);
+    }
+
+}

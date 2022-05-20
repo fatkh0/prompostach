@@ -1,14 +1,19 @@
-import React from 'react'
+import React, {useState, useRef, LegacyRef, useEffect, RefObject} from 'react'
+import { useOnClickOutside } from 'usehooks-ts'
 import Header from './Header'
 
 
-type TProps = {}
+type TProps = {
+}
 
-const HeaderContainer: React.FC<TProps> = React.memo(() => {
+const HeaderContainer: React.FC<TProps> = React.memo((props) => {
 
+    const logoText = 'prompostach'
 
-
-    return <Header />
+    return <Header 
+        logoText={logoText} 
+        {...props}
+        />
 })
 
 export default HeaderContainer
