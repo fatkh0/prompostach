@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import Menu from '../../assets/Menu/Menu'
 import { TNavItem } from '../../types/types'
 import { FaShoppingCart } from "react-icons/fa";
+import CartMenu from './CartMenu'
 
 
 type TProps = {}
@@ -16,7 +16,15 @@ const CartMenuContainer: React.FC<TProps> = React.memo( () => {
         {id: 3, desctiption: 'pay', path: '/pay', innerText: 'оплата'}
     ]
 
-    return <Menu Icon={FaShoppingCart} menuItems={cartMenuItems} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} stylesX='-right-[50px]' />
+    const productCount = 1
+
+    return <CartMenu 
+        productCount={productCount}
+        Icon={FaShoppingCart} 
+        menuItems={cartMenuItems} 
+        isMenuOpen={isMenuOpen} 
+        setIsMenuOpen={setIsMenuOpen} 
+        stylesX=' -right-[54px]' />
 })
 
 export default CartMenuContainer

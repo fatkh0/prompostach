@@ -1,19 +1,20 @@
-import React, { LegacyRef, useRef, useState, RefObject, useEffect } from 'react'
+import React, { LegacyRef, useRef, useState, RefObject, useEffect, useContext } from 'react'
 import Hamburger from '../../assets/Hamburger/Hamburger'
 import showControl from '../../assets/showControl/showControl'
 import NavbarContainer from '../Navbar/NavbarContainer'
 import { useOnClickOutside } from "usehooks-ts";
+import HamburgerMenuContext from './HamburgerMenuContext';
 
 
 
 
 type TProps = {
-    isMenuOpen: boolean
-    setIsMenuOpen: (isNavbarOpen: boolean) => void
 }
 
 
-const HamburgerMenu: React.FC<TProps> = React.memo(({setIsMenuOpen, isMenuOpen}) => {
+const HamburgerMenu: React.FC<TProps> = React.memo(() => {
+
+    const {setIsMenuOpen, isMenuOpen} = useContext(HamburgerMenuContext)
 
     const wrapper = useRef(null)
 
@@ -22,18 +23,22 @@ const HamburgerMenu: React.FC<TProps> = React.memo(({setIsMenuOpen, isMenuOpen})
     }
     useOnClickOutside(wrapper, closeMenu)
 
+
     return (
-        <div ref={wrapper} className='relative'>
-            <div className='h-full -mt-3 sm:-mt-[17px] ml-0.5 mr-16'>
+        <div className='relative'>
+            <div ref={wrapper} className=''>
+            <div className='h-full -mt-3 sm:-mt-[17px]  ml-0.5 mr-16'>
                 <Hamburger isMenuOpen={isMenuOpen} callback={setIsMenuOpen}/>
             </div>
             
             {showControl((
-                    <div className='absolute z-20 top-7 -left-[8px] sm:-left-3'>
-                        <NavbarContainer />
+                    <div className='absolute shadow-lg shadow-black z-30 top-7 lg:top-8 -left-[8px] sm:-left-3'>
+                        <NavbarContainer closeMenu={closeMenu} />
                     </div>
                 ), isMenuOpen)}
-        </div>     
+        </div>  
+        </div>
+           
     )
 })
 

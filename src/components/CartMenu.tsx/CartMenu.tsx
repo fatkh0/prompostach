@@ -1,6 +1,7 @@
 import React, { EventHandler, MouseEventHandler, RefObject, useEffect, useRef } from "react";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { useOnClickOutside } from "usehooks-ts";
+import CircleProductCount from "../../assets/CircleProductCount/CircleProductCount";
 import makeNavbar from '../../assets/navbarCreater'
 import showControl from "../../assets/showControl/showControl";
 import { TNavItem } from '../../types/types'
@@ -11,9 +12,10 @@ type TProps = {
     setIsMenuOpen: (isMenuOpen: boolean ) => void
     stylesX: string
     Icon: typeof FaUser | typeof FaShoppingCart
+    productCount: number
 }
 
-const Menu: React.FC<TProps> = React.memo(({menuItems, setIsMenuOpen, isMenuOpen, stylesX, Icon}) => {
+const CartMenu: React.FC<TProps> = React.memo(({menuItems, setIsMenuOpen, isMenuOpen, stylesX, Icon, productCount}) => {
 
     const wrapper = useRef(null)
     
@@ -32,6 +34,12 @@ const Menu: React.FC<TProps> = React.memo(({menuItems, setIsMenuOpen, isMenuOpen
         <div ref={wrapper} className="relative">
             <div onClick={onToggleMenu} className='cursor-pointer'>
                 <Icon className='w-6 h-6 sm:w-8 sm:h-8' />
+                {showControl(
+                    <div className="absolute -top-2 -right-3">
+                        <CircleProductCount count={productCount} />
+                    </div>
+                , productCount > 0)}
+                
             </div>
             {showControl(
                 <div className={'absolute top-10 z-50 lg:top-12 sm:top-11 sm:left-auto sm:-right-2 ' + stylesX}>
@@ -46,4 +54,4 @@ const Menu: React.FC<TProps> = React.memo(({menuItems, setIsMenuOpen, isMenuOpen
     )
 })
 
-export default Menu
+export default CartMenu

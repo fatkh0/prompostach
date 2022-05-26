@@ -19,7 +19,7 @@ const ContainerFluid: React.FC<TProps> = React.memo(({children}) => {
     )
 })
 
-export default ContainerFluid
+//export default ContainerFluid
 
 
 /*

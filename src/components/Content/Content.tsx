@@ -1,10 +1,17 @@
 import React from "react";
-import ContainerFluid from "../ContainerFluid/ContainerFluid";
 import Container from '../Container/Container'
 import BannerContainer from "../Banner/BannerContainer";
+import { Route, Routes } from "react-router-dom";
+import MainPageContainer from "../MainPage/MainPageContainer";
+import AboutPageContainer from "../AboutPage/AboutPageContainer";
+import CatalogPageContainer from "../CatalogPage/CatalogPageContainer";
+import ContactsPageContainer from "../ContactsPage/ContactsPageContainer";
 
 
-type TProps = {}
+
+
+type TProps = {
+}
 
 const Content: React.FC<TProps> = React.memo(() => {
 
@@ -13,12 +20,15 @@ const Content: React.FC<TProps> = React.memo(() => {
 
     return (
         <React.Fragment>
-            <BannerContainer />
-            <Container>
-                <React.Fragment>
-                    content
-                </React.Fragment>
-            </Container>
+                <Routes>
+
+                            <Route path=""  element={<MainPageContainer /> }/>
+                            <Route path="about"  element={<AboutPageContainer /> }/>
+                            <Route path="catalog"  element={<CatalogPageContainer /> }/>
+                            <Route path="contacts"  element={<ContactsPageContainer /> }/>
+                            
+                </Routes>
+
         </React.Fragment>
         
     )

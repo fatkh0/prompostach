@@ -8,7 +8,7 @@ type TProps = {
 const Container: React.FC<TProps> = ({children}) => {
 
     return  (
-        <div className="w-screnn max-w-[1280px] mx-auto px-1 sm:px-1.5">
+        <div className="w-screnn max-w-[1280px] mx-auto px-2 xl:px-1.5">
             {children}
         </div>
     )

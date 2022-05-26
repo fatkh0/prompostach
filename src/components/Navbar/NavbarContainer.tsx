@@ -2,7 +2,9 @@ import React from "react";
 import Navbar from "./Navbar";
 
 
-type TProps = {}
+type TProps = {
+    closeMenu: () => void
+}
 
 export type TNavItem = {
     id: number
@@ -12,10 +14,10 @@ export type TNavItem = {
 }
 
 
-const NavbarContainer: React.FC<TProps> = () => {
+const NavbarContainer: React.FC<TProps> = ({closeMenu}) => {
 
     const  navbar: Array<TNavItem> = [
-        {id: 1, desctiption: 'mainPage', path: '/main', innerText: 'главная'},
+        {id: 1, desctiption: 'mainPage', path: '/', innerText: 'главная'},
         {id: 2, desctiption: 'aboutUs', path: '/about', innerText: 'о нас'},
         {id: 3, desctiption: 'contacts', path: '/contacts', innerText: 'контакты'},
     ]
@@ -36,7 +38,7 @@ const NavbarContainer: React.FC<TProps> = () => {
 
 
 
-    return <Navbar navbar={navbar} catalog={catalog} languages={languages} />
+    return <Navbar navbar={navbar} closeMenu={closeMenu} catalog={catalog} languages={languages} />
 }
 
 export default NavbarContainer

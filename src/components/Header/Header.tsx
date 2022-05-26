@@ -2,7 +2,6 @@ import React, { LegacyRef, useRef, useState, RefObject } from 'react'
 import Hamburger from '../../assets/Hamburger/Hamburger'
 import showControl from '../../assets/showControl/showControl'
 import Container from '../Container/Container'
-import LoginMenu from '../LoginMenu/LoginMenu'
 import Navbar from '../Navbar/Navbar'
 import NavbarContainer from '../Navbar/NavbarContainer'
 import user from '../../images/user.png'
@@ -10,6 +9,7 @@ import { FaUser, FaShoppingCart } from "react-icons/fa";
 import LoginMenuContainer from '../LoginMenu/LoginMenuContainer'
 import CartMenuContainer from '../CartMenu.tsx/CartMenuContainer'
 import HamburgerMenuContainer from '../HamburgerMenu/HamburgerMenuContainer'
+import { rmSync } from 'fs'
 
 
 
@@ -19,15 +19,15 @@ type TProps = {
 }
 
 
+
 const Header: React.FC<TProps> = React.memo(({logoText}) => {
 
 
 
     return (
-        <header className='bg-black h-14 text-white min-w-screen sm:right-0 sm:left-0 sm:fixed'>
+        <header className='bg-black  text-white'>
             <Container>
-                <div className='relative'>
-                    <div className='h-14 flex items-center justify-between '>
+                    <div className='h-14 lg:h-16 flex items-center justify-between '>
 
                         <HamburgerMenuContainer />
 
@@ -41,7 +41,6 @@ const Header: React.FC<TProps> = React.memo(({logoText}) => {
                         </div>
                     </div>
 
-                </div>
                 
             </Container>
         </header>
